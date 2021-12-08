@@ -24,12 +24,30 @@ void printArray(vector<int> &numArr){
     }
 }
 
-void bubbleSort(){
+void swapPos(vector<int> &numArr, int first, int sec){
+    int temp = numArr[first];
+    numArr[first] = numArr[sec];
+    numArr[sec] = temp;
+}
 
+void bubbleSort(vector<int> &numArr){
+    bool swapped;
+    for(int i = 0; numArr.size()-1; i++){
+        swapped = false;
+        for(int j = 0; j < numArr.size()-i-1; j++){
+            if(numArr[j] > numArr[j+1]){
+                swapPos(numArr, j, j+1);
+                swapped = true;
+            }
+        }
+        if(swapped == false)
+            break;
+
+    }
 }
 
 void selectionSort(){
-    
+
 }
 
 void insertionSort(){
@@ -56,7 +74,11 @@ int main(int argc, char *argv[]){
 
     insertRandNum(numArr, A_SIZE);
 
-
+    printArray(numArr);
+    bubbleSort(numArr);
+    
+    cout << "----BUBBLE SORTED----" << endl;
+    printArray(numArr);
 
     return 0;
 }
