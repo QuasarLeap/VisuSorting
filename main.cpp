@@ -68,7 +68,13 @@ void selectionSort(vector<int> &numArr){
 }
 
 void insertionSort(vector<int> &numArr){
-    
+    for(int i = 1; i < numArr.size(); i++){//go through all elements, creating sorted partition to the left
+    int j = i;
+        while(numArr[j] < numArr[j-1] && j > 0){
+            swapPos(numArr, j, j-1);
+            j-=1;
+        }
+    }
 
 }
 
@@ -94,9 +100,11 @@ int main(int argc, char *argv[]){
 
     printArray(numArr);
     //bubbleSort(numArr);
-    selectionSort(numArr);
+    //selectionSort(numArr);
+    insertionSort(numArr);
     //cout << "----BUBBLE SORTED----" << endl;
-    cout << "-----SELECTION SORTED-----" << endl;
+    //cout << "-----SELECTION SORTED-----" << endl;
+    cout << "----INSERTION SORT----" << endl;
     printArray(numArr);
 
     return 0;
