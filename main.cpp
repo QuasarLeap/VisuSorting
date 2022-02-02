@@ -49,15 +49,15 @@ int Partition(vector<int> &numArr, int leftPos,  int rightPos){
             SwapPos(numArr, i, posLastSmaller);
             posLastSmaller += 1;//increment to show that the position before has smaller number than pivot
         }
-        cout << "i=" << i << " posLastSmaller=" << posLastSmaller << "PivotPos=" << pivotPos << endl;
-        PrintArray(numArr);
-        cout << "*******************\n" << endl; //test outputs/////////////
+        //cout << "i=" << i << " posLastSmaller=" << posLastSmaller << "PivotPos=" << pivotPos << endl;
+        //PrintArray(numArr);
+        //cout << "*******************\n" << endl; //test outputs/////////////
     }
 
     SwapPos(numArr, posLastSmaller, rightPos);
 
-    PrintArray(numArr);
-    cout << "+++++++++++" << endl;
+    //PrintArray(numArr);
+    //cout << "+++++++++++" << endl;
     return posLastSmaller;
 
 }
@@ -118,7 +118,7 @@ void QuickSort(vector<int> &numArr, int leftPos, int rightPos){
     }
     
     int pIndex = Partition(numArr, leftPos, rightPos);//sort current partition around the pivot
-    cout << "-----Partition FInished----" << endl;
+    //cout << "-----Partition FInished----" << endl;
     //PrintArray(numArr);
     QuickSort(numArr, leftPos, pIndex-1);//sort left partition
     QuickSort(numArr, pIndex+1, rightPos);//sort right partition
@@ -140,7 +140,7 @@ void RadixSort(){
 
 int main(int argc, char *argv[]){
 
-    const int A_SIZE = 10;
+    const int A_SIZE = 100;
     vector<int> numArr;
 
     InsertRandNum(numArr, A_SIZE);
