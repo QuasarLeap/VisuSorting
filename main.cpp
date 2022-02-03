@@ -19,8 +19,8 @@ void InsertRandNum(vector<int> &numArr, int size){
 }
 
 
-void PrintArray(vector<int> &numArr){
-    for(int i = 0; i < numArr.size(); i++){
+void PrintArray(vector<int> &numArr, int N){
+    for(int i = 0; i < N; i++){
         cout << numArr[i] << endl;
     }
 }
@@ -64,11 +64,11 @@ int Partition(vector<int> &numArr, int leftPos,  int rightPos){
 
 
 
-void BubbleSort(vector<int> &numArr){
+void BubbleSort(vector<int> &numArr, int N){
     bool swapped;
-    for(int i = 0; numArr.size()-1; i++){
+    for(int i = 0; N-1; i++){
         swapped = false;
-        for(int j = 0; j < numArr.size()-i-1; j++){//bring largest number to the end of vector/array
+        for(int j = 0; j < N-i-1; j++){//bring largest number to the end of vector/array
             if(numArr[j] > numArr[j+1]){
                 SwapPos(numArr, j, j+1);
                 swapped = true;
@@ -80,14 +80,14 @@ void BubbleSort(vector<int> &numArr){
     }
 }
 
-void SelectionSort(vector<int> &numArr){
+void SelectionSort(vector<int> &numArr, int N){
     //current minimum index/item variable
     //set current minimum to the first unsorted element
 
-    for(int i = 0; i < numArr.size(); i++){
+    for(int i = 0; i < N; i++){
         int curMinI = i;
         //look for smaller number
-        for(int j = i+1; j < numArr.size(); j++){
+        for(int j = i+1; j < N; j++){
             if(numArr[j] < numArr[curMinI]){
                 curMinI = j;
             }
@@ -101,8 +101,8 @@ void SelectionSort(vector<int> &numArr){
 
 }
 
-void InsertionSort(vector<int> &numArr){
-    for(int i = 1; i < numArr.size(); i++){//go through all elements, creating sorted partition to the left
+void InsertionSort(vector<int> &numArr, int N){
+    for(int i = 1; i < N; i++){//go through all elements, creating sorted partition to the left
     int j = i;
         while(numArr[j] < numArr[j-1] && j > 0){
             SwapPos(numArr, j, j-1);
@@ -145,16 +145,16 @@ int main(int argc, char *argv[]){
 
     InsertRandNum(numArr, A_SIZE);
 
-    PrintArray(numArr);
-    //BubbleSort(numArr);
-    //SelectionSort(numArr);
-    //InsertionSort(numArr);
+    PrintArray(numArr, A_SIZE);
+    //BubbleSort(numArr, A_SIZE);
+    //SelectionSort(numArr, A_SIZE);
+    //InsertionSort(numArr, A_SIZE);
     QuickSort(numArr, 0, numArr.size()-1);
     //cout << "----BUBBLE SORTED----" << endl;
     //cout << "-----SELECTION SORTED-----" << endl;
     //cout << "----INSERTION SORT----" << endl;
     cout << "----QUICK SORT----" << endl;
-    PrintArray(numArr);
+    PrintArray(numArr, A_SIZE);
 
     return 0;
 }
