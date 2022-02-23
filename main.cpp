@@ -63,6 +63,35 @@ int Partition(vector<int> &numArr, int leftPos,  int rightPos){
 }
 
 
+void Merge(vector<int> &numArr, int left, int mid, int right){
+    vector<int> sortedArr;
+    int lpointer = left;
+    int rpointer = right;
+    int mpointer = mid;
+    cout << "TEST: " << endl;
+    PrintArray(numArr, numArr.size());
+    cout << "LPOINTER: " << lpointer << " RPOINTER: " << rpointer << endl;
+    for(int i = 0; i <= right-left; i++){
+        if(numArr[lpointer] < numArr[mpointer]){
+            sortedArr.push_back(numArr[lpointer]);
+            lpointer++;
+        }
+        else{
+            sortedArr.push_back(numArr[mpointer]);
+            mpointer++;
+        }
+    }
+
+    for(int i = 0; i <= right-left; i++){
+        numArr[left] = sortedArr[i];
+        left++;
+    }
+
+
+    
+}
+
+
 
 void BubbleSort(vector<int> &numArr, int N){
     bool swapped;
@@ -125,9 +154,17 @@ void QuickSort(vector<int> &numArr, int leftPos, int rightPos){
 
 }
 
-void MergeSort(){
+void MergeSort(vector<int> &numArr, int start, int end){//NOT DONE
+    if(start == end){
+        return;
+    }
 
-}
+    MergeSort(numArr, start, end/2);
+    MergeSort(numArr, (end/2)+1, end);
+    Merge(numArr, start, (end/2)+1, end);
+    
+
+}//NOT DONE
 
 void HeapSort(){
 
@@ -140,7 +177,7 @@ void RadixSort(){
 
 int main(int argc, char *argv[]){
 
-    const int A_SIZE = 100;
+    const int A_SIZE = 10;
     vector<int> numArr;
 
     InsertRandNum(numArr, A_SIZE);
@@ -149,11 +186,13 @@ int main(int argc, char *argv[]){
     //BubbleSort(numArr, A_SIZE);
     //SelectionSort(numArr, A_SIZE);
     //InsertionSort(numArr, A_SIZE);
-    QuickSort(numArr, 0, numArr.size()-1);
+    //QuickSort(numArr, 0, A_SIZE-1);
+    //MergeSort(numArr, 0, A_SIZE-1);
     //cout << "----BUBBLE SORTED----" << endl;
     //cout << "-----SELECTION SORTED-----" << endl;
     //cout << "----INSERTION SORT----" << endl;
-    cout << "----QUICK SORT----" << endl;
+    //cout << "----QUICK SORT----" << endl;
+    //cout << "----MERGE SORT----" << endl;
     PrintArray(numArr, A_SIZE);
 
     return 0;
